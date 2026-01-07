@@ -1,0 +1,217 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const allImages = [
+  'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=1200&h=1200&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&h=1200&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1594708767771-a75022e7ff35?q=80&w=1200&h=1200&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1618498082410-b4aa22193b38?q=80&w=1200&h=1200&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1517486808906-6538cb3f3ee5?q=80&w=1200&h=1200&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=1200&h=1200&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1627843533334-3a7a9b928540?q=80&w=1200&h=1200&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1509099652299-503fab4ef255?q=80&w=1200&h=1200&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1472224371017-08207f84aa6a?q=80&w=1200&h=1200&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1542810634-71277d9520a3?q=80&w=1200&h=1200&auto=format&fit=crop',
+];
+
+// Créer des sets de 4 images pour le carrousel
+const imageSets = [];
+for (let i = 0; i < allImages.length; i += 4) {
+  imageSets.push(allImages.slice(i, i + 4));
+}
+
+const taglines = [
+  { text: 'Emploi des jeunes', colorClass: 'text-[#DF851A]' },
+  { text: 'Les droits des femmes', colorClass: 'text-[#5FB1DE]' },
+  { text: 'Le bien de la nature', colorClass: 'text-[#62967A]' }
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const imageVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
+export default function HeroSection() {
+  const [currentImageSetIndex, setCurrentImageSetIndex] = useState(0);
+  const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0);
+
+  useEffect(() => {
+    const imageTimer = setInterval(() => {
+      setCurrentImageSetIndex((prevIndex) => (prevIndex + 1) % imageSets.length);
+    }, 7000);
+    return () => clearInterval(imageTimer);
+  }, []);
+
+  useEffect(() => {
+    const taglineTimer = setInterval(() => {
+      setCurrentTaglineIndex((prevIndex) => (prevIndex + 1) % taglines.length);
+    }, 4000);
+    return () => clearInterval(taglineTimer);
+  }, []);
+
+  return (
+    <div className="relative w-full h-[75vh] md:h-screen">
+      {/* Mobile: Background Image */}
+      <div className="absolute inset-0 w-full h-full z-0 md:hidden">
+        <AnimatePresence>
+          <motion.img
+            key={currentImageSetIndex}
+            src={allImages[currentImageSetIndex]}
+            alt={`Communauté PRISMA ${currentImageSetIndex}`}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 2, ease: 'easeInOut' }}
+            className="w-full h-full object-cover object-center"
+          />
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#5FB1DE]/30 to-[#DF851A]/30 pointer-events-none"></div>
+      </div>
+
+      {/* Desktop & Tablet: Side by side layout */}
+      <div className="hidden md:flex h-full">
+        {/* Text Content */}
+        <div className="w-1/2 lg:w-1/3 flex flex-col justify-center p-12 lg:p-16 bg-white/90 backdrop-blur-[100px] z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h1 className="text-4xl lg:text-6xl font-bold text-[#1E22AA] mb-4">
+              PRISMA,
+            </h1>
+            <p className="text-2xl lg:text-3xl font-semibold text-slate-800 mb-8 leading-snug">
+              une communauté au service de la communauté !
+            </p>
+            <p className="text-xl lg:text-2xl text-slate-600 mb-6 font-poppins">
+              Engagé pour
+            </p>
+            
+            <div className="w-full h-32 relative">
+              <AnimatePresence mode="wait">
+                <motion.h2
+                  key={currentTaglineIndex}
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  className={`${taglines[currentTaglineIndex].colorClass} text-4xl lg:text-6xl font-bold`}
+                >
+                  {taglines[currentTaglineIndex].text}
+                </motion.h2>
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Images Grid */}
+        <div className="flex-1 relative">
+          <AnimatePresence>
+            {/* Tablet Grid (1 row, 3 columns) */}
+            <motion.div
+                key={`${currentImageSetIndex}-tablet`}
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0 w-full h-full grid grid-cols-3 gap-2 p-2 md:grid lg:hidden"
+            >
+                {imageSets[currentImageSetIndex].slice(0, 3).map((src, index) => (
+                    <motion.div
+                        key={index}
+                        variants={imageVariants}
+                        className="w-full h-full"
+                    >
+                        <img
+                            src={src}
+                            alt={`Communauté PRISMA ${currentImageSetIndex}-${index}`}
+                            className="w-full h-full object-cover border-2 border-white rounded-lg shadow-md"
+                        />
+                    </motion.div>
+                ))}
+            </motion.div>
+
+            {/* Desktop Grid (1 row, 4 columns) */}
+            <motion.div
+                key={`${currentImageSetIndex}-desktop`}
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0 w-full h-full grid grid-cols-4 gap-2 p-2 hidden lg:grid"
+            >
+                {imageSets[currentImageSetIndex].slice(0, 4).map((src, index) => (
+                    <motion.div
+                        key={index}
+                        variants={imageVariants}
+                        className="w-full h-full"
+                    >
+                        <img
+                            src={src}
+                            alt={`Communauté PRISMA ${currentImageSetIndex}-${index}`}
+                            className="w-full h-full object-cover border-2 border-white rounded-lg shadow-md"
+                        />
+                    </motion.div>
+                ))}
+            </motion.div>
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#5FB1DE]/[0.45] to-[#DF851A]/[0.35] pointer-events-none"></div>
+        </div>
+      </div>
+
+      {/* Mobile: Text Content Overlay */}
+      <div className="relative z-10 h-full flex items-center justify-center p-0 md:hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="bg-black/20 backdrop-blur-md rounded-xl p-6 text-center w-full max-w-md"
+        >
+          <h1 className="text-5xl font-bold text-white mb-4">
+            PRISMA,
+          </h1>
+          <p className="text-2xl font-semibold text-white/90 mb-8 leading-snug">
+            une communauté au service de la communauté !
+          </p>
+          <p className="text-xl text-white/80 mb-6 font-poppins">
+            Engagé pour
+          </p>
+          
+          <div className="w-full h-24 relative flex justify-center">
+            <AnimatePresence mode="wait">
+              <motion.h2
+                key={currentTaglineIndex}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                className="text-white text-4xl font-bold"
+              >
+                {taglines[currentTaglineIndex].text}
+              </motion.h2>
+            </AnimatePresence>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
