@@ -6,12 +6,19 @@ import { createPageUrl } from '@/utils';
 import { ArrowDown } from 'lucide-react';
 import MediaCarousel from './MediaCarousel';
 import NewsletterForm from './NewsletterForm';
-import { useTranslation } from '../translation/TranslationContext';
+import { useTranslation } from '../translation/useTranslation';
 
-const ImpactStat = ({ value, label, color, circlePercentage = 80 }) => {
+interface ImpactStatProps {
+    value: number;
+    label: string;
+    color: string;
+    circlePercentage?: number;
+}
+
+const ImpactStat: React.FC<ImpactStatProps> = ({ value, label, color, circlePercentage = 80 }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
-    const countRef = useRef(null);
+    const countRef = useRef<HTMLSpanElement | null>(null);
 
     useEffect(() => {
         if (isInView) {

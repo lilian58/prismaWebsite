@@ -3,7 +3,14 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const realisationsData = [
+interface Realisation {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+}
+
+const realisationsData: Realisation[] = [
   {
     id: 1,
     title: "Dons de bétails aux membres des OBC",
@@ -55,7 +62,7 @@ const realisationsData = [
 ];
 
 // Grouper les réalisations par paires (2 par page)
-const groupedRealisations = [];
+const groupedRealisations: Realisation[][] = [];
 for (let i = 0; i < realisationsData.length; i += 2) {
   groupedRealisations.push(realisationsData.slice(i, i + 2));
 }
@@ -99,7 +106,7 @@ export default function RealisationsSection() {
             >
               {/* Affichage vertical pour tous les écrans */}
               <div className="flex flex-col items-center space-y-16 md:space-y-20 lg:space-y-24">
-                {groupedRealisations[currentIndex].map((realisation, index) => (
+                {groupedRealisations[currentIndex].map((realisation) => (
                   <div key={realisation.id} className="flex flex-col w-full max-w-sm md:max-w-2xl lg:max-w-3xl">
                     <img 
                       src={realisation.image} 

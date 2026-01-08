@@ -1,4 +1,4 @@
-import React from "react";
+
 import TopBar from '../components/home/TopBar';
 import HeroSection from '../components/home/HeroSection';
 import AboutSection from '../components/home/AboutSection';

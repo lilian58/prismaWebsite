@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Languages, ChevronUp, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useTranslation } from './TranslationContext';
+import { useTranslation } from './useTranslation';
+import type { Language } from './translations';
 
-const languages = [
+const languages: { code: Language; name: string; flag: string }[] = [
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
   { code: 'en', name: 'English', flag: '🇺🇸' },
   { code: 'rn', name: 'Kirundi', flag: '🇧🇮' }
@@ -18,7 +18,7 @@ export default function FloatingTranslator() {
     return languages.find(lang => lang.code === currentLanguage) || languages[0];
   };
 
-  const handleLanguageChange = (language) => {
+  const handleLanguageChange = (language: { code: Language; name: string; flag: string }) => {
     setCurrentLanguage(language.code);
     setIsOpen(false);
   };
@@ -59,10 +59,10 @@ export default function FloatingTranslator() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Button
+          <button
+            type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="bg-[#1E22AA] hover:bg-[#161a88] text-white rounded-full p-4 shadow-lg border-2 border-white"
-            size="lg"
           >
             <div className="flex items-center space-x-2">
               <Languages className="w-5 h-5" />
@@ -73,7 +73,7 @@ export default function FloatingTranslator() {
                 <ChevronUp className="w-4 h-4" />
               )}
             </div>
-          </Button>
+          </button>
         </motion.div>
       </div>
     </div>

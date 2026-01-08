@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Facebook, Instagram, Mail } from 'lucide-react';
+import { Facebook } from 'lucide-react';
 
 export default function ContactFooter() {
   return (

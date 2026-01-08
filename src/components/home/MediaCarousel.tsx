@@ -12,7 +12,7 @@ const mediaItems = [
 ];
 
 export default function MediaCarousel() {
-    const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {
@@ -73,7 +73,7 @@ export default function MediaCarousel() {
 
             {/* Desktop: Multiple Images */}
             <div className="hidden md:block">
-                <div className="flex h-[400px] gap-2 group">
+                <div className="flex h-100 gap-2 group">
                     {mediaItems.map((item, index) => (
                         <motion.div
                             key={index}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Facebook, Instagram, Mail } from 'lucide-react';
-import { useTranslation } from '../translation/TranslationContext';
+import { useTranslation } from '../translation/useTranslation';
 
 export default function TopBar() {
   const { t } = useTranslation();
@@ -9,7 +9,7 @@ export default function TopBar() {
     <div className="bg-[#1E22AA] text-white py-2 px-4 sm:px-6 lg:px-8 flex items-center justify-between overflow-hidden">
       <div className="flex-1 marquee-container">
           <p className="marquee whitespace-nowrap text-sm font-medium uppercase tracking-wider">
-            Promouvoir les initiatives socioéconomiques du monde associatif
+            {t('topbar.marquee')}
           </p>
       </div>
       <div className="flex items-center space-x-4 pl-4 z-10 bg-[#1E22AA]">

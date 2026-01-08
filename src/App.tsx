@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './Layout';
+import Accueil from "./page/Accueil";
+import ActivitesSocioeconomiques from "./page/ActivitesSocioeconomiques";
+import Actualites from "./page/Actualites";
+import BienEtreFemme from "./page/BienEtreFemme";
+import FormationJeunes from "./page/FormationJeunes";
+import Projets from "./page/Projets";
+import Realisations from "./page/Realisations";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout currentPageName="Accueil"><Accueil /></Layout>} />
+        <Route path="/activites-socioeconomiques" element={<Layout currentPageName="ActivitesSocioeconomiques"><ActivitesSocioeconomiques /></Layout>} />
+        <Route path="/actualites" element={<Layout currentPageName="Actualites"><Actualites /></Layout>} />
+        <Route path="/bien-etre-femme" element={<Layout currentPageName="BienEtreFemme"><BienEtreFemme /></Layout>} />
+        <Route path="/formation-jeunes" element={<Layout currentPageName="FormationJeunes"><FormationJeunes /></Layout>} />
+        <Route path="/projets" element={<Layout currentPageName="Projets"><Projets /></Layout>} />
+        <Route path="/realisations" element={<Layout currentPageName="Realisations"><Realisations /></Layout>} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;

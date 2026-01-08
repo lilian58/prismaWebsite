@@ -7,7 +7,7 @@ export default function NewsletterForm() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email) return;
     setStatus('loading');
@@ -67,7 +67,7 @@ export default function NewsletterForm() {
                         <input
                             type="email"
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                             placeholder="ENTREZ VOTRE COURRIEL"
                             className="w-full px-4 py-3 text-slate-800 rounded-l-md border-0 outline-none placeholder:text-slate-400 placeholder:font-medium placeholder:uppercase"
                             required

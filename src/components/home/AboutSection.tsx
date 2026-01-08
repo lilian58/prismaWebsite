@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { TrendingUp, Target, Users } from 'lucide-react';
-import { useTranslation } from '../translation/TranslationContext';
+import { useTranslation } from '../translation/useTranslation';
 
 const aboutImages = [
   'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&h=600&auto=format&fit=crop',
@@ -49,7 +49,7 @@ export default function AboutSection() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Slider d'images */}
             <div className="relative">
-              <div className="aspect-[3/4] md:aspect-[4/5] rounded-lg overflow-hidden shadow-lg">
+              <div className="aspect-3/4 md:aspect-4/5 rounded-lg overflow-hidden shadow-lg">
                 <img
                   src={aboutImages[currentImageIndex]}
                   alt={`PRISMA équipe ${currentImageIndex + 1}`}

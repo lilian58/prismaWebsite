@@ -2,20 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const allImages = [
-  'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=1200&h=1200&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&h=1200&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1594708767771-a75022e7ff35?q=80&w=1200&h=1200&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1618498082410-b4aa22193b38?q=80&w=1200&h=1200&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1517486808906-6538cb3f3ee5?q=80&w=1200&h=1200&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=1200&h=1200&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1627843533334-3a7a9b928540?q=80&w=1200&h=1200&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1509099652299-503fab4ef255?q=80&w=1200&h=1200&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1472224371017-08207f84aa6a?q=80&w=1200&h=1200&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1542810634-71277d9520a3?q=80&w=1200&h=1200&auto=format&fit=crop',
+  '/images/elevage.jpg',
+  '/images/elevage2.jpg',
+  '/images/plante.jpg',
+  '/images/porc.jpg',
+  '/images/porc2.jpg',
+  '/images/elevage3.jpg',
+  '/images/vache.jpg',
+  '/images/plante5.jpg',
+  '/images/arbre.jpg',
+  '/images/vache2.jpg',
+  '/images/arbre3.jpg',
+  '/images/elevage4.jpg',
+  '/images/porc3.jpg',
+  '/images/graine4.jpg',
 ];
 
 // Créer des sets de 4 images pour le carrousel
-const imageSets = [];
+const imageSets: string[][] = [];
 for (let i = 0; i < allImages.length; i += 4) {
   imageSets.push(allImages.slice(i, i + 4));
 }
@@ -40,11 +44,7 @@ const imageVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut"
-    }
+    y: 0
   }
 };
 

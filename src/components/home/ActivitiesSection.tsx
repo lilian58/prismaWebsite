@@ -1,11 +1,22 @@
-
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { useTranslation } from '../translation/TranslationContext';
+import { useTranslation } from '../translation/useTranslation';
 
-const ActivityCard = ({ activity }) => {
+interface Activity {
+    id: number;
+    bgColor: string;
+    textColor: string;
+    buttonColor: string;
+    title: string;
+    description: string;
+    imageUrl: string;
+    imagePosition: 'left' | 'right';
+    linkTo: string;
+    exploreText: string;
+}
+
+const ActivityCard = ({ activity }: { activity: Activity }) => {
     const isImageLeft = activity.imagePosition === 'left';
     const contentOrder = isImageLeft ? 'md:flex-row' : 'md:flex-row-reverse';
     const initialRotate = isImageLeft ? { bg: -6, img: 3 } : { bg: 6, img: -3 };
@@ -66,7 +77,7 @@ export default function ActivitiesSection() {
     const { t } = useTranslation();
     const text = t('activities.mainTitle');
 
-    const activitiesData = [
+    const activitiesData: Activity[] = [
         {
             id: 1,
             bgColor: "bg-[#FEFBF5]",

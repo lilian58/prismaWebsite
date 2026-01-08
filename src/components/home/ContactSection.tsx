@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Phone, Mail, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Phone } from "lucide-react";
 import ContactFooter from "../contact/ContactFooter";
 import { SendEmail } from "@/integrations/Core";
-import { useTranslation } from "../translation/TranslationContext";
+import { useTranslation } from "../translation/useTranslation";
 
 export default function ContactSection() {
   const { t } = useTranslation();
@@ -17,9 +14,9 @@ export default function ContactSection() {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
+  const [submitStatus, setSubmitStatus] = useState<string | null>(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
@@ -72,7 +69,7 @@ export default function ContactSection() {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -139,52 +136,52 @@ export default function ContactSection() {
             )}
             
             <form onSubmit={handleSubmit} className="space-y-4">
-              <Input
+              <input
                 type="text"
                 name="name"
                 placeholder={t('contact.name')}
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              
-              <Input
+
+              <input
                 type="email"
                 name="email"
                 placeholder={t('contact.email')}
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              
-              <Input
+
+              <input
                 type="text"
                 name="subject"
                 placeholder={t('contact.subject')}
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              
-              <Textarea
+
+              <textarea
                 name="message"
                 placeholder={t('contact.message')}
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full h-32"
+                className="w-full h-32 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
               />
-              
-              <Button 
-                type="submit" 
+
+              <button
+                type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#1E22AA] hover:bg-[#161a88] text-white py-3"
+                className="w-full bg-[#1E22AA] hover:bg-[#161a88] text-white py-3 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? t('contact.sending') : t('contact.send')}
-              </Button>
+              </button>
             </form>
           </motion.div>
         </div>
