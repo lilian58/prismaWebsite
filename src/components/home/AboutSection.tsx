@@ -6,10 +6,10 @@ import { TrendingUp, Target, Users } from 'lucide-react';
 import { useTranslation } from '../translation/useTranslation';
 
 const aboutImages = [
-  'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&h=600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&h=600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1517486808906-6538cb3f3ee5?q=80&w=800&h=600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=800&h=600&auto=format&fit=crop'
+  '/images/femme/femme1.jpg',
+  '/images/femme/femme2.jpg',
+  '/images/plante.jpg',
+  '/images/arbre.jpg',
 ];
 
 export default function AboutSection() {

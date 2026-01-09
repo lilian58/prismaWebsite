@@ -3,12 +3,15 @@ import { motion } from 'framer-motion';
 import { PlayCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const mediaItems = [
-    { type: 'image', src: 'https://images.unsplash.com/photo-1542810634-71277d9520a3?q=80&w=600&h=800&auto=format&fit=crop' },
-    { type: 'video', src: 'https://images.unsplash.com/photo-1517486808906-6538cb3f3ee5?q=80&w=600&h=800&auto=format&fit=crop' },
-    { type: 'image', src: 'https://images.unsplash.com/photo-1472224371017-08207f84aa6a?q=80&w=600&h=800&auto=format&fit=crop' },
-    { type: 'video', src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600&h=800&auto=format&fit=crop' },
-    { type: 'image', src: 'https://images.unsplash.com/photo-1520182213-911572978a48?q=80&w=600&h=800&auto=format&fit=crop' },
-    { type: 'image', src: 'https://images.unsplash.com/photo-1509099652299-503fab4ef255?q=80&w=600&h=800&auto=format&fit=crop' },
+    { type: 'image', src: '/images/activite-socioeconomique/nature.jpg' },
+    { type: 'image', src: '/images/femme/femme4.jpg' },
+    { type: 'image', src: '/images/arbre.jpg' },
+    { type: 'image', src: '/images/graine.jpg' },
+    { type: 'image', src: '/images/porc3.jpg' },
+    { type: 'image', src: '/images/activite-socioeconomique/plantation.jpg' },
+    { type: 'image', src: '/images/vache.jpg' },
+    { type: 'image', src: '/images/plante5.jpg' },
+    { type: 'image', src: '/images/elevage.jpg' },
 ];
 
 export default function MediaCarousel() {

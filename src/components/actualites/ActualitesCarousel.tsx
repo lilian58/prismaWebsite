@@ -9,7 +9,7 @@ const actualitesData = [
     category: "SOCIÉTÉ & DÉVELOPPEMENT",
     title: "ACCOMPAGNEMENT DES JEUNES FEMMES ENTREPRENEURES DANS LE SECTEUR AGRICOLE",
     description: "PRISMA a lancé un programme d'accompagnement des jeunes femmes entrepreneures dans le secteur agricole. Cette initiative vise à soutenir les femmes dans le développement de leurs activités agricoles en leur fournissant une formation technique, un accès au financement et un accompagnement personnalisé. Le programme comprend des sessions de formation sur les techniques agricoles modernes, la gestion d'entreprise et le marketing des produits agricoles. Les participantes bénéficient également d'un mentorat individuel et d'un accès à un réseau de partenaires financiers. Cette initiative s'inscrit dans notre mission de promotion de l'autonomisation économique des femmes et de développement durable du secteur agricole au Burundi.",
-    image: "https://images.unsplash.com/photo-1594708767771-a75022e7ff35?q=80&w=600&h=800&auto=format&fit=crop"
+    image: "/images/femme/femme3.jpg"
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const actualitesData = [
     category: "ENVIRONNEMENT",
     title: "CAMPAGNE DE REBOISEMENT COMMUNAUTAIRE",
     description: "PRISMA organise une grande campagne de reboisement avec la participation active de la communauté locale. Plus de 500 arbres ont été plantés dans différentes zones de la région, contribuant à la lutte contre la déforestation et au changement climatique. Cette initiative mobilise les jeunes, les femmes et les leaders communautaires dans un effort collectif pour préserver notre environnement naturel.",
-    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600&h=800&auto=format&fit=crop"
+    image: "/images/arbre2.jpg"
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const actualitesData = [
     category: "FORMATION",
     title: "FORMATION PROFESSIONNELLE POUR LES JEUNES",
     description: "Lancement d'un nouveau programme de formation professionnelle destiné aux jeunes de 18 à 35 ans. Ce programme couvre plusieurs domaines incluant l'informatique, l'artisanat, l'agriculture moderne et l'entrepreneuriat. L'objectif est de doter les jeunes des compétences nécessaires pour s'insérer dans le marché du travail ou créer leurs propres entreprises.",
-    image: "https://images.unsplash.com/photo-1524503033411-c9566986fc8f?q=80&w=600&h=800&auto=format&fit=crop"
+    image: "/images/jeunes/enfant1.jpg"
   }
 ];
 

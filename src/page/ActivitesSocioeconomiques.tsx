@@ -1,4 +1,4 @@
-import React from "react";
+
 import HeroSection from "../components/home/HeroSection";
 import ActivitesSocioeconomiquesSection from "../components/socioeco/ActivitesSocioeconomiquesSection";
 import MediaCarousel from "../components/home/MediaCarousel";

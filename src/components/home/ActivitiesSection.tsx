@@ -85,7 +85,7 @@ export default function ActivitiesSection() {
             buttonColor: "bg-[#DF851A]",
             title: t('activities.women.title'),
             description: t('activities.women.description'),
-            imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&h=1000&auto=format&fit=crop",
+            imageUrl: "/images/femme/femme1.jpg",
             imagePosition: "left",
             linkTo: "BienEtreFemme",
             exploreText: t('activities.explore')
@@ -97,7 +97,7 @@ export default function ActivitiesSection() {
             buttonColor: "bg-[#5FB1DE]",
             title: t('activities.youth.title'),
             description: t('activities.youth.description'),
-            imageUrl: "https://images.unsplash.com/photo-1524503033411-c9566986fc8f?q=80&w=800&h=1000&auto=format&fit=crop",
+            imageUrl: "/images/jeunes/enfant2.jpg",
             imagePosition: "right",
             linkTo: "FormationJeunes",
             exploreText: t('activities.explore')
@@ -109,7 +109,7 @@ export default function ActivitiesSection() {
             buttonColor: "bg-[#62967A]",
             title: t('activities.nature.title'),
             description: t('activities.nature.description'),
-            imageUrl: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&h=1000&auto=format&fit=crop",
+            imageUrl: "/images/activite-socioeconomique/plantation2.jpg",
             imagePosition: "left",
             linkTo: "ActivitesSocioeconomiques",
             exploreText: t('activities.explore')

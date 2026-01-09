@@ -107,7 +107,7 @@ export default function ContactSection() {
         {/* Background Image */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#84D8AA]/36 to-[#62967A]">
           <img 
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&h=800&auto=format&fit=crop" 
+            src="/images/activite-socioeconomique/nature.jpg" 
             alt="PRISMA Community" 
             className="w-full h-full object-cover"
           />
