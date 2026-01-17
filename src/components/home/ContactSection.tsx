@@ -2,8 +2,23 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone } from "lucide-react";
 import ContactFooter from "../contact/ContactFooter";
-import { SendEmail } from "@/integrations/Core";
+import emailjs from '@emailjs/browser';
 import { useTranslation } from "../translation/useTranslation";
+
+const SendEmail = async ({ to, name, email, subject, body }: { to: string; name?: string; email?: string; subject: string; body: string; from_name?: string }) => {
+  return emailjs.send(
+    "service_7o9wl6f",
+    "template_2fgvltq",
+    {
+      to_email: to,
+      name: name,
+      email: email,
+      subject: subject,
+      message: body
+    },
+    "YFAb7wWPU18u9A0tJ"
+  );
+};
 
 export default function ContactSection() {
   const { t } = useTranslation();
@@ -23,38 +38,13 @@ export default function ContactSection() {
 
     try {
       // Structure du corps de l'email en HTML pour un rendu professionnel
-      const emailBody = `
-        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-          <h2 style="color: #1E22AA; border-bottom: 2px solid #5FB1DE; padding-bottom: 10px;">Nouveau Message - Site PRISMA</h2>
-          <p>Vous avez reçu une nouvelle demande de contact :</p>
-          <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-            <tr style="border-bottom: 1px solid #eee;">
-              <td style="padding: 10px; font-weight: bold; width: 120px;">Nom:</td>
-              <td style="padding: 10px;">${formData.name}</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #eee;">
-              <td style="padding: 10px; font-weight: bold;">Email:</td>
-              <td style="padding: 10px;"><a href="mailto:${formData.email}" style="color: #1E22AA;">${formData.email}</a></td>
-            </tr>
-            <tr style="border-bottom: 1px solid #eee;">
-              <td style="padding: 10px; font-weight: bold;">Sujet:</td>
-              <td style="padding: 10px;">${formData.subject}</td>
-            </tr>
-          </table>
-          <h3 style="color: #1E22AA;">Message :</h3>
-          <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; border-left: 4px solid #DF851A;">
-            <p style="margin: 0; white-space: pre-wrap;">${formData.message}</p>
-          </div>
-          <p style="font-size: 12px; color: #777; margin-top: 30px; text-align: center;">
-            ---<br>
-            Cet e-mail a été envoyé depuis le formulaire de contact du site web PRISMA.
-          </p>
-        </div>
-      `;
+      const emailBody = `${formData.message}`;
 
       await SendEmail({
         to: 'itoualilian@gmail.com',
-        subject: `[PRISMA Contact] ${formData.subject}`,
+        name: `${formData.name}`,
+        email: `${formData.email}`,
+        subject: `${formData.subject}`,
         body: emailBody,
         from_name: 'Site Web PRISMA'
       });
@@ -105,9 +95,9 @@ export default function ContactSection() {
       {/* Contact Form Section */}
       <div className="relative min-h-screen">
         {/* Background Image */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#84D8AA]/36 to-[#62967A]">
+        <div className="absolute inset-0  from-[#84D8AA]/36 to-[#62967A]">
           <img 
-            src="/images/activite-socioeconomique/nature.jpg" 
+            src="/images/contact3.jpg" 
             alt="PRISMA Community" 
             className="w-full h-full object-cover"
           />
@@ -187,7 +177,7 @@ export default function ContactSection() {
         </div>
 
         {/* Contact Info Bar */}
-        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 bg-[#5FB1DE] text-white px-6 sm:px-8 py-4 rounded-lg shadow-lg w-11/12 sm:w-auto">
+        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 bg-[#01a7d1] text-white px-6 sm:px-8 py-4 rounded-lg shadow-lg w-11/12 sm:w-auto">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
             <div className="flex items-center gap-2">
               <Phone className="w-4 h-4 sm:w-5 sm:h-5" />

@@ -1,4 +1,4 @@
-import React from "react";
+
 import HeroSection from "../components/home/HeroSection";
 import ActualitesCarousel from "../components/actualites/ActualitesCarousel";
 import MediaCarousel from "../components/home/MediaCarousel";

@@ -69,7 +69,7 @@ export default function NewsletterForm() {
                             value={email}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                             placeholder="ENTREZ VOTRE COURRIEL"
-                            className="w-full px-4 py-3 text-slate-800 rounded-l-md border-0 outline-none placeholder:text-slate-400 placeholder:font-medium placeholder:uppercase"
+                            className="bg-white w-full px-4 py-3 text-slate-800 rounded-l-md border-0 outline-none placeholder:text-slate-400 placeholder:font-medium placeholder:uppercase"
                             required
                             disabled={status === 'loading'}
                         />
