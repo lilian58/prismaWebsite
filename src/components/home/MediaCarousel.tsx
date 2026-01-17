@@ -34,10 +34,10 @@ export default function MediaCarousel() {
     };
 
     return (
-        <div className="w-full">
+        <div className="w-full ">
             {/* Mobile: Single Image Carousel */}
             <div className="block md:hidden">
-                <div className="relative h-[300px] w-full">
+                <div className="relative h-75 w-full">
                     <motion.div
                         key={activeIndex}
                         initial={{ opacity: 0, x: 50 }}
@@ -75,8 +75,8 @@ export default function MediaCarousel() {
             </div>
 
             {/* Desktop: Multiple Images */}
-            <div className="hidden md:block">
-                <div className="flex h-100 gap-2 group">
+            <div className="hidden md:block ">
+                <div className="flex h-screen gap-2 group">
                     {mediaItems.map((item, index) => (
                         <motion.div
                             key={index}

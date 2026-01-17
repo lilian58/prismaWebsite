@@ -9,8 +9,8 @@ export default function FormationJeunes() {
     <div className="bg-white">
       <HeroSection />
       <FormationJeunesSection />
-      <section className="pt-4 bg-white">
-        <div className="w-full px-0">
+      <section className="pt-4 bg-white h-screen">
+        <div className="w-full h-screen px-0">
           <MediaCarousel />
         </div>
       </section>
