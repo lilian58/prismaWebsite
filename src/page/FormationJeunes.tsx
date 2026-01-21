@@ -1,4 +1,3 @@
-import React from "react";
 import HeroSection from "../components/home/HeroSection";
 import FormationJeunesSection from "../components/formation/FormationJeunesSection";
 import MediaCarousel from "../components/home/MediaCarousel";
