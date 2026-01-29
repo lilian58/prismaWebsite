@@ -2,8 +2,11 @@
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { Facebook } from 'lucide-react';
+import { useTranslation } from '../translation/useTranslation';
 
 export default function ContactFooter() {
+  const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
   return (
     <footer className="bg-[#1E22AA] text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,21 +14,21 @@ export default function ContactFooter() {
           
           {/* Accueil */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Accueil</h3>
+            <h3 className="text-xl font-semibold mb-4">{t('footer.home')}</h3>
           </div>
 
           {/* À propos de nous */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">À propos de nous</h3>
+            <h3 className="text-xl font-semibold mb-4">{t('footer.about')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link to={createPageUrl("Actualites")} className="text-white/80 hover:text-white transition-colors">
-                  Actualités
+                  {t('footer.news')}
                 </Link>
               </li>
               <li>
                 <Link to={createPageUrl("Projets")} className="text-white/80 hover:text-white transition-colors">
-                  Projets
+                  {t('footer.projects')}
                 </Link>
               </li>
             </ul>
@@ -33,21 +36,21 @@ export default function ContactFooter() {
 
           {/* Activités */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Activités</h3>
+            <h3 className="text-xl font-semibold mb-4">{t('footer.activities')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link to={createPageUrl("FormationJeunes")} className="text-white/80 hover:text-white transition-colors">
-                  Emploi des jeunes
+                  {t('footer.youthTraining')}
                 </Link>
               </li>
               <li>
                 <Link to={createPageUrl("BienEtreFemme")} className="text-white/80 hover:text-white transition-colors">
-                  Droits de la femme
+                  {t('footer.womenWellbeing')}
                 </Link>
               </li>
               <li>
                 <Link to={createPageUrl("ActivitesSocioeconomiques")} className="text-white/80 hover:text-white transition-colors">
-                  Activité écologique
+                  {t('footer.socioEconomicActivities')}
                 </Link>
               </li>
             </ul>
@@ -55,16 +58,16 @@ export default function ContactFooter() {
 
           {/* Impact */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Impact</h3>
+            <h3 className="text-xl font-semibold mb-4">{t('footer.achievements')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link to={createPageUrl("Realisations")} className="text-white/80 hover:text-white transition-colors">
-                  Partenaires
+                  {t('footer.partners')}
                 </Link>
               </li>
               <li>
                 <Link to={createPageUrl("Realisations")} className="text-white/80 hover:text-white transition-colors">
-                  Réalisations
+                  {t('footer.achievements')}
                 </Link>
               </li>
             </ul>
@@ -89,7 +92,7 @@ export default function ContactFooter() {
         {/* Copyright */}
         <div className="border-t border-white/20 pt-8">
           <p className="text-center text-white/80">
-            Copyright © 2025 PRISMA. All rights reserved.
+            Copyright © {currentYear} PRISMA. All rights reserved.
           </p>
         </div>
       </div>

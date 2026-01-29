@@ -1,34 +1,32 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from '../translation/useTranslation';
 
 const allImages = [
   '/images/elevage.jpg',
-  '/images/elevage2.jpg',
-  '/images/plante.jpg',
+  '/images/contact.png',
+  '/images/plante3.jpg',
   '/images/porc.jpg',
   '/images/porc2.jpg',
+  '/images/jeunes/jeune.jpg',
   '/images/elevage3.jpg',
   '/images/vache.jpg',
   '/images/plante5.jpg',
   '/images/arbre.jpg',
   '/images/vache2.jpg',
   '/images/arbre3.jpg',
+  '/images/contact3.jpg',
   '/images/elevage4.jpg',
   '/images/porc3.jpg',
   '/images/graine4.jpg',
+  '/images/jeunes/enfant4.jpg',
 ];
 
 // Créer des sets de 4 images pour le carrousel
 const imageSets: string[][] = [];
 for (let i = 0; i < allImages.length; i += 4) {
-  imageSets.push(allImages.slice(i, i + 4));
+    imageSets.push(allImages.slice(i, i + 4));
 }
-
-const taglines = [
-  { text: 'Emploi des jeunes', colorClass: 'text-[#DF851A]' },
-  { text: 'Les droits des femmes', colorClass: 'text-[#5FB1DE]' },
-  { text: 'Le bien de la nature', colorClass: 'text-[#62967A]' }
-];
 
 const containerVariants = {
   hidden: {},
@@ -41,16 +39,26 @@ const containerVariants = {
 };
 
 const imageVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 0 },
   visible: {
     opacity: 1,
     y: 0
   }
 };
 
+
 export default function HeroSection() {
-  const [currentImageSetIndex, setCurrentImageSetIndex] = useState(0);
-  const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0);
+   const { t } = useTranslation();
+   const [currentImageSetIndex, setCurrentImageSetIndex] = useState(0);
+   const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0);
+
+   const taglines = [
+      { text: t('hero.taglines.youth'), colorClass: 'text-[#DF851A]' },
+      { text: t('hero.taglines.women'), colorClass: 'text-[#5FB1DE]' },
+      { text: t('hero.taglines.nature'), colorClass: 'text-[#62967A]' },
+      { text: t('hero.taglines.autonomy'), colorClass: 'text-[#1E22AA]' },
+      { text: t('hero.taglines.children'), colorClass: 'text-[#528429]' },
+   ];
 
   useEffect(() => {
     const imageTimer = setInterval(() => {
@@ -95,13 +103,13 @@ export default function HeroSection() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-4xl lg:text-6xl font-bold text-[#1E22AA] mb-4">
-              PRISMA,
+              {t('hero.title')}
             </h1>
             <p className="text-2xl lg:text-3xl font-semibold text-slate-800 mb-8 leading-snug">
-              une communauté au service de la communauté !
+              {t('hero.subtitle')}
             </p>
             <p className="text-xl lg:text-2xl text-slate-600 mb-6 font-poppins">
-              Engagé pour
+              {t('hero.engaged')}
             </p>
             
             <div className="w-full h-32 relative">
@@ -112,7 +120,7 @@ export default function HeroSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, transition: { duration: 0.2 } }}
                   transition={{ duration: 0.7, ease: "easeOut" }}
-                  className={`${taglines[currentTaglineIndex].colorClass} text-4xl lg:text-6xl font-bold`}
+                  className={`${taglines[currentTaglineIndex].colorClass} text-3xl lg:text-5xl font-bold p-5`}
                 >
                   {taglines[currentTaglineIndex].text}
                 </motion.h2>
@@ -187,13 +195,13 @@ export default function HeroSection() {
           className="bg-black/20 backdrop-blur-md rounded-xl p-6 text-center w-full max-w-md"
         >
           <h1 className="text-5xl font-bold text-white mb-4">
-            PRISMA,
+            {t('hero.title')}
           </h1>
           <p className="text-2xl font-semibold text-white/90 mb-8 leading-snug">
-            une communauté au service de la communauté !
+            {t('hero.subtitle')}
           </p>
           <p className="text-xl text-white/80 mb-6 font-poppins">
-            Engagé pour
+            {t('hero.engaged')}
           </p>
           
           <div className="w-full h-24 relative flex justify-center">

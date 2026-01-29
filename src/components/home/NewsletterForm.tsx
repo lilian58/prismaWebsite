@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, XCircle } from 'lucide-react';
 import { Subscriber } from '@/entities/Subscriber';
+import { useTranslation } from '../translation/useTranslation';
 
 export default function NewsletterForm() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
 
@@ -36,8 +38,8 @@ export default function NewsletterForm() {
         </div>
 
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white relative z-10">
-            <h2 className="text-3xl font-bold uppercase">Restez informer de tout !</h2>
-            <p className="text-xl font-semibold mt-2">SUR NOTRE NEWSLETTER</p>
+            <h2 className="text-3xl font-bold uppercase">{t('newsletter.title')}</h2>
+            <p className="text-xl font-semibold mt-2">{t('newsletter.subtitle')}</p>
             
             <form onSubmit={handleSubmit} className="mt-8 max-w-md mx-auto min-h-[3rem]">
                 {status === 'success' ? (
@@ -47,7 +49,7 @@ export default function NewsletterForm() {
                         className="flex items-center justify-center gap-2 bg-green-500/80 p-3 rounded-lg"
                      >
                         <CheckCircle className="w-6 h-6 text-white"/>
-                        <p className="font-semibold">Merci pour votre inscription !</p>
+                        <p className="font-semibold">{t('newsletter.success')}</p>
                      </motion.div>
                 ) : status === 'error' ? (
                     <motion.div
@@ -56,7 +58,7 @@ export default function NewsletterForm() {
                         className="flex items-center justify-center gap-2 bg-red-500/80 p-3 rounded-lg"
                     >
                         <XCircle className="w-6 h-6 text-white"/>
-                        <p className="font-semibold">Une erreur est survenue.</p>
+                        <p className="font-semibold">{t('newsletter.error')}</p>
                     </motion.div>
                 ) : (
                     <motion.div
@@ -68,7 +70,7 @@ export default function NewsletterForm() {
                             type="email"
                             value={email}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                            placeholder="ENTREZ VOTRE COURRIEL"
+                            placeholder={t('newsletter.placeholder')}
                             className="bg-white w-full px-4 py-3 text-slate-800 rounded-l-md border-0 outline-none placeholder:text-slate-400 placeholder:font-medium placeholder:uppercase"
                             required
                             disabled={status === 'loading'}
@@ -79,7 +81,7 @@ export default function NewsletterForm() {
                             whileTap={{ scale: 0.95 }}
                             disabled={status === 'loading'}
                         >
-                            {status === 'loading' ? 'Envoi...' : 'S\'inscrire'}
+                            {status === 'loading' ? t('newsletter.subscribing') : t('newsletter.subscribe')}
                         </motion.button>
                     </motion.div>
                 )}
