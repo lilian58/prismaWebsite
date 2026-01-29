@@ -16,10 +16,13 @@ const allImages = [
   '/images/vache2.jpg',
   '/images/arbre3.jpg',
   '/images/contact3.jpg',
-  '/images/elevage4.jpg',
+  '/images/jeunes/enfant5.jpg',
   '/images/porc3.jpg',
   '/images/graine4.jpg',
   '/images/jeunes/enfant4.jpg',
+  '/images/plante2.jpg',
+  '/images/arbre3.jpg',
+  '/images/activite-socioeconomique/plantation5.jpg',
 ];
 
 // Créer des sets de 4 images pour le carrousel
@@ -77,13 +80,13 @@ export default function HeroSection() {
   return (
     <div className="relative w-full h-[75vh] md:h-screen">
       {/* Mobile: Background Image */}
-      <div className="absolute inset-0 w-full h-full z-0 md:hidden">
-        <AnimatePresence>
+      <div className="absolute inset-0 w-full h-full z-0 md:hidden overflow-hidden">
+        <AnimatePresence mode='wait'>
           <motion.img
             key={currentImageSetIndex}
             src={allImages[currentImageSetIndex]}
             alt={`Communauté PRISMA ${currentImageSetIndex}`}
-            initial={{ opacity: 0, scale: 1.05 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 2, ease: 'easeInOut' }}
@@ -98,7 +101,7 @@ export default function HeroSection() {
         {/* Text Content */}
         <div className="w-1/2 lg:w-1/3 flex flex-col justify-center p-12 lg:p-16 bg-white/90 backdrop-blur-[100px] z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
@@ -189,7 +192,7 @@ export default function HeroSection() {
       {/* Mobile: Text Content Overlay */}
       <div className="relative z-10 h-full flex items-center justify-center p-0 md:hidden">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="bg-black/20 backdrop-blur-md rounded-xl p-6 text-center w-full max-w-md"
@@ -208,7 +211,7 @@ export default function HeroSection() {
             <AnimatePresence mode="wait">
               <motion.h2
                 key={currentTaglineIndex}
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: 0 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, transition: { duration: 0.2 } }}
                 transition={{ duration: 0.7, ease: "easeOut" }}
