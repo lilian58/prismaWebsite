@@ -7,7 +7,10 @@ import type { Language } from './translations';
 const languages: { code: Language; name: string; flag: string }[] = [
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
   { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'rn', name: 'Kirundi', flag: '🇧🇮' }
+  { code: 'rn', name: 'Kirundi / Kinyarwanda', flag: '🇧🇮' },
+  { code: 'sv', name: 'Svenska', flag: '🇸🇪' },
+  { code: 'nl', name: 'Nederlands', flag: '🇳🇱'},
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪' }
 ];
 
 export default function FloatingTranslator() {

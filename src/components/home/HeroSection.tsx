@@ -55,13 +55,13 @@ export default function HeroSection() {
    const [currentImageSetIndex, setCurrentImageSetIndex] = useState(0);
    const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0);
 
-   const taglines = [
-      { text: t('hero.taglines.youth'), colorClass: 'text-[#DF851A]' },
-      { text: t('hero.taglines.women'), colorClass: 'text-[#5FB1DE]' },
-      { text: t('hero.taglines.nature'), colorClass: 'text-[#62967A]' },
-      { text: t('hero.taglines.autonomy'), colorClass: 'text-[#1E22AA]' },
-      { text: t('hero.taglines.children'), colorClass: 'text-[#528429]' },
-   ];
+  const taglines = [
+  { text: t('hero.taglines.youth'), colorClass: 'bg-[#DF851A] text-white px-10 py-5 rounded-lg inline-block' },
+  { text: t('hero.taglines.women'), colorClass: 'bg-[#5FB1DE] text-white px-10 py-5 rounded-lg inline-block' },
+  { text: t('hero.taglines.nature'), colorClass: 'bg-[#62967A] text-white px-10 py-5 rounded-lg inline-block' },
+  { text: t('hero.taglines.autonomy'), colorClass: 'bg-[#1E22AA] text-white px-10 py-5 rounded-lg inline-block' },
+  { text: t('hero.taglines.children'), colorClass: 'bg-[#528429] text-white px-10 py-5 rounded-lg inline-block' },
+];
 
   useEffect(() => {
     const imageTimer = setInterval(() => {
@@ -122,8 +122,8 @@ export default function HeroSection() {
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, transition: { duration: 0.2 } }}
-                  transition={{ duration: 0.7, ease: "easeOut" }}
-                  className={`${taglines[currentTaglineIndex].colorClass} text-3xl lg:text-5xl font-bold p-5`}
+                  transition={{ duration: 1, ease: "easeOut" }}
+                  className={`${taglines[currentTaglineIndex].colorClass} text-2xl lg:text-3xl font-bold p-5`}
                 >
                   {taglines[currentTaglineIndex].text}
                 </motion.h2>
