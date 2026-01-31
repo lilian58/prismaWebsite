@@ -26,7 +26,7 @@ const translations: Record<Language, Translation> = {
     hero: {
       title: 'PRISMA,',
       subtitle: 'une communauté au service de la communauté !',
-      engaged: 'Engagé pour',
+      engaged: 'Engagée pour',
       taglines: {
         youth: 'Emploi des jeunes',
         women: 'Les droits des femmes',
